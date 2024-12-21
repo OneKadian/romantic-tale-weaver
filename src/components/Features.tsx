@@ -6,26 +6,31 @@ const features = [
   {
     title: "Create your own characters",
     description: "Name him, decide what he looks like, behaves like, decide what he does, for work and to her : )",
+    image: "photo-1649972904349-6e44c42644a7",
     comingSoon: false,
   },
   {
     title: "Write your own story",
     description: "From meet-cutes to happily-ever-afters, bring your romantic fantasies to life, decide the plot, the twists, the fantasies",
+    image: "photo-1581091226825-a6a2a5aee158",
     comingSoon: false,
   },
   {
     title: "Visualize the scenes",
     description: "Bring him to life, create his images, dress him up the way you want, put him in scenarios",
+    image: "photo-1581090464777-f3220bbe1b8b",
     comingSoon: true,
   },
   {
     title: "Imagine yourself with him",
     description: "Upload your own picture, create an avatar and create the pictures where he gets to explore you",
+    image: "photo-1485827404703-89b55fcc595e",
     comingSoon: true,
   },
   {
     title: "Talk to him",
     description: "Wanna hear his deep manly voice as he confesses to you? Talk to all your characters, either over text or hear them",
+    image: "photo-1649972904349-6e44c42644a7",
     comingSoon: true,
   },
 ];
@@ -68,6 +73,14 @@ export const Features = () => {
               </div>
               
               <div className="bg-white rounded-xl p-6 shadow-lg">
+                <div className="mb-6 aspect-video rounded-lg overflow-hidden">
+                  <img
+                    src={`https://source.unsplash.com/${features[currentIndex].image}`}
+                    alt={features[currentIndex].title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                
                 {features[currentIndex].comingSoon && (
                   <span className="inline-block bg-primary text-white text-sm px-3 py-1 rounded-full mb-4">
                     Coming Soon

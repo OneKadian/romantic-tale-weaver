@@ -49,6 +49,10 @@ export default {
           "0%": { transform: "translateX(-100%)" },
           "100%": { transform: "translateX(0)" },
         },
+        "grow-height": {
+          "0%": { transform: "scaleY(0)" },
+          "100%": { transform: "scaleY(1)" },
+        },
       },
       animation: {
         "carousel-left": "carousel-left 0.4s ease-out",
