@@ -1,3 +1,5 @@
+import { useEffect, useRef } from "react";
+
 export const Steps = () => {
   const steps = [
     {
@@ -17,6 +19,35 @@ export const Steps = () => {
     },
   ];
 
+  const stepsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observers = stepsRef.current.map((step, index) => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("animate-fade-in");
+              entry.target.style.opacity = "1";
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      if (step) {
+        observer.observe(step);
+      }
+
+      return observer;
+    });
+
+    return () => {
+      observers.forEach((observer) => observer.disconnect());
+    };
+  }, []);
+
   return (
     <section className="py-16 px-4 bg-white relative">
       <div className="max-w-6xl mx-auto">
@@ -30,8 +61,12 @@ export const Steps = () => {
           {steps.map((step, index) => (
             <div 
               key={step.number} 
-              className="flex items-start gap-4 md:gap-6 opacity-0 animate-[fade-in_0.5s_ease-out_forwards]"
-              style={{ animationDelay: `${index * 0.3}s` }}
+              ref={(el) => (stepsRef.current[index] = el)}
+              className="flex items-start gap-4 md:gap-6 opacity-0 transition-all duration-700"
+              style={{ 
+                transitionDelay: `${index * 0.3}s`,
+                transform: "translateY(20px)"
+              }}
             >
               <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl relative z-10">
                 {step.number}
