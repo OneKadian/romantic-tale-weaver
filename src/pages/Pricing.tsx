@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Switch } from "@/components/ui/switch";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { ArrowBigLeftDash } from "lucide-react";
 
 const Pricing = () => {
   const [isAnnual, setIsAnnual] = useState(false);
@@ -49,7 +50,11 @@ const Pricing = () => {
             <p className="text-lg mb-2">
               Costs as much as this {isAnnual ? "hotdog" : "burger"} here
             </p>
-            <div className="flex justify-center">
+            <div className="flex justify-center items-center gap-4">
+              <ArrowBigLeftDash 
+                className="w-12 h-12 text-primary -scale-y-100 rotate-45" 
+                strokeWidth={2.5}
+              />
               <img
                 src={currentPlan.image}
                 alt={isAnnual ? "Hotdog" : "Burger"}
