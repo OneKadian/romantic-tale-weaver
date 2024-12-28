@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { Switch } from "@/components/ui/switch";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -33,25 +33,22 @@ const Pricing = () => {
     <div className="container mx-auto px-4 py-16 min-h-screen">
       <div className="flex flex-col items-center gap-8">
         {/* Toggle */}
-        <ToggleGroup
-          type="single"
-          value={isAnnual ? "annual" : "monthly"}
-          onValueChange={(value) => setIsAnnual(value === "annual")}
-          className="bg-accent rounded-full p-1.5"
-        >
-          <ToggleGroupItem
-            value="monthly"
-            className="rounded-full px-6 py-2 data-[state=on]:bg-white data-[state=on]:shadow-sm"
-          >
-            Monthly
-          </ToggleGroupItem>
-          <ToggleGroupItem
-            value="annual"
-            className="rounded-full px-6 py-2 data-[state=on]:bg-white data-[state=on]:shadow-sm"
-          >
-            Annual <span className="text-primary ml-1">(2 months free)</span>
-          </ToggleGroupItem>
-        </ToggleGroup>
+        <div className="flex items-center gap-3 bg-accent/30 rounded-full px-4 py-2">
+          <span className={`text-sm font-medium ${!isAnnual ? 'text-primary' : ''}`}>Monthly</span>
+          <Switch
+            checked={isAnnual}
+            onCheckedChange={setIsAnnual}
+            className="data-[state=checked]:bg-primary"
+          />
+          <div className="flex items-center gap-1">
+            <span className={`text-sm font-medium ${isAnnual ? 'text-primary' : ''}`}>Annual</span>
+            {isAnnual && (
+              <span className="text-primary font-bold text-sm animate-bounce">
+                2 MONTHS FREE! 🎊
+              </span>
+            )}
+          </div>
+        </div>
 
         {/* Pricing Card */}
         <Card className="w-full max-w-md border-2 border-primary">
