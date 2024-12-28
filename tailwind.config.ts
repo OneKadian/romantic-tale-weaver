@@ -49,25 +49,10 @@ export default {
           "0%": { transform: "translateX(-100%)" },
           "100%": { transform: "translateX(0)" },
         },
-        "grow-height": {
-          "0%": { transform: "scaleY(0)" },
-          "100%": { transform: "scaleY(1)" },
-        },
-        "fade-in": {
-          "0%": { 
-            opacity: "0",
-            transform: "translateY(20px)"
-          },
-          "100%": { 
-            opacity: "1",
-            transform: "translateY(0)"
-          }
-        },
       },
       animation: {
         "carousel-left": "carousel-left 0.4s ease-out",
         "carousel-right": "carousel-right 0.4s ease-out",
-        "fade-in": "fade-in 0.7s ease-out forwards",
       },
     },
   },
