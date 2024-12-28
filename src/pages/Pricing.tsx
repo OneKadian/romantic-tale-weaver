@@ -40,14 +40,7 @@ const Pricing = () => {
             onCheckedChange={setIsAnnual}
             className="data-[state=checked]:bg-primary"
           />
-          <div className="flex items-center gap-1">
-            <span className={`text-sm font-medium ${isAnnual ? 'text-primary' : ''}`}>Annual</span>
-            {isAnnual && (
-              <span className="text-primary font-bold text-sm animate-bounce">
-                2 MONTHS FREE! 🎊
-              </span>
-            )}
-          </div>
+          <span className={`text-sm font-medium ${isAnnual ? 'text-primary' : ''}`}>Annual</span>
         </div>
 
         {/* Pricing Card */}
