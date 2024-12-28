@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Toggle } from "@/components/ui/toggle";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -33,24 +33,25 @@ const Pricing = () => {
     <div className="container mx-auto px-4 py-16 min-h-screen">
       <div className="flex flex-col items-center gap-8">
         {/* Toggle */}
-        <div className="flex items-center gap-4 bg-accent rounded-full p-2">
-          <button
-            onClick={() => setIsAnnual(false)}
-            className={`px-6 py-2 rounded-full transition-colors ${
-              !isAnnual ? "bg-white shadow-sm" : ""
-            }`}
+        <ToggleGroup
+          type="single"
+          value={isAnnual ? "annual" : "monthly"}
+          onValueChange={(value) => setIsAnnual(value === "annual")}
+          className="bg-accent rounded-full p-1.5"
+        >
+          <ToggleGroupItem
+            value="monthly"
+            className="rounded-full px-6 py-2 data-[state=on]:bg-white data-[state=on]:shadow-sm"
           >
             Monthly
-          </button>
-          <button
-            onClick={() => setIsAnnual(true)}
-            className={`px-6 py-2 rounded-full transition-colors ${
-              isAnnual ? "bg-white shadow-sm" : ""
-            }`}
+          </ToggleGroupItem>
+          <ToggleGroupItem
+            value="annual"
+            className="rounded-full px-6 py-2 data-[state=on]:bg-white data-[state=on]:shadow-sm"
           >
-            Annual
-          </button>
-        </div>
+            Annual <span className="text-primary ml-1">(2 months free)</span>
+          </ToggleGroupItem>
+        </ToggleGroup>
 
         {/* Pricing Card */}
         <Card className="w-full max-w-md border-2 border-primary">
