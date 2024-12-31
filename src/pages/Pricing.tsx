@@ -10,8 +10,9 @@ const Pricing = () => {
     monthly: {
       price: "$8",
       period: "month",
-      image: "/lovable-uploads/7029aca8-1e67-4390-b204-542873a78668.png",
-      calories: "600",
+      image: "/lovable-uploads/54212c3f-8494-4fce-b6d3-35f6bf35dc0b.png",
+      title: "Costs as much as this Caramel Latte here",
+      intro: "Would you consume this once or have:",
       duration: "30 days",
       billing: "You will be billed once monthly",
       freeMonths: "",
@@ -19,8 +20,9 @@ const Pricing = () => {
     annual: {
       price: "$6.6",
       period: "month",
-      image: "/lovable-uploads/97981640-8f81-4e8f-b71f-1d9cb719e964.png",
-      calories: "410",
+      image: "/lovable-uploads/736a1ca1-1717-430d-adf0-cc8411a277af.png",
+      title: "Costs as much as this Cafe mocha here",
+      intro: "Would you consume this once or have:",
       duration: "365 days",
       billing: "You will be billed once annually",
       freeMonths: "2 MONTHS FREE! 🎊",
@@ -47,13 +49,17 @@ const Pricing = () => {
         <Card className="w-full max-w-md border-2 border-primary">
           <CardHeader className="text-center">
             <p className="text-lg mb-2">
-              Costs as much as this {isAnnual ? "hotdog" : "burger"} here
+              {currentPlan.title}
             </p>
             <div className="flex justify-center">
+              {/* Preload both images */}
+              <link rel="preload" as="image" href={planDetails.monthly.image} />
+              <link rel="preload" as="image" href={planDetails.annual.image} />
               <img
                 src={currentPlan.image}
-                alt={isAnnual ? "Hotdog" : "Burger"}
+                alt={isAnnual ? "Cafe mocha" : "Caramel Latte"}
                 className="w-48 h-auto object-contain"
+                loading="eager"
               />
             </div>
           </CardHeader>
@@ -75,7 +81,7 @@ const Pricing = () => {
 
             <div className="space-y-4">
               <p>
-                You decide 🔊, {currentPlan.calories} calories once or
+                {currentPlan.intro}
               </p>
               <ul className="space-y-2">
                 <li>- Unlimited stories for the whole {isAnnual ? "year" : "month"}?</li>
