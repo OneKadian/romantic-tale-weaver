@@ -10,7 +10,7 @@ const Pricing = () => {
     monthly: {
       price: "$8",
       period: "month",
-      image: "/lovable-uploads/54212c3f-8494-4fce-b6d3-35f6bf35dc0b.png",
+      image: "/lovable-uploads/13095a82-684e-4ea8-9543-786253cf3770.png",
       title: "Costs as much as this Caramel Latte here",
       intro: "Would you consume this once or have:",
       duration: "30 days",
@@ -58,7 +58,7 @@ const Pricing = () => {
               <img
                 src={currentPlan.image}
                 alt={isAnnual ? "Cafe mocha" : "Caramel Latte"}
-                className="w-48 h-auto object-contain"
+                className={`w-48 h-auto object-contain ${isAnnual ? 'animate-carousel-left' : 'animate-carousel-right'}`}
                 loading="eager"
               />
             </div>
